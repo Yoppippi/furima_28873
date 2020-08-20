@@ -40,3 +40,4 @@
 | city             | string     | null: false                    |
 | address          | string     | null: false                    |
 | phone_number     | int        | null: false                    |
+a
