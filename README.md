@@ -1,24 +1,73 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column           | Type   | Options     |
+| ---------------- | ------ | ----------- |
+| nickname         | string | null: false |
+| family_name      | string | null: false |
+| first_name       | string | null: false |
+| family_name_kana | string | null: false |
+| first_name_kana  | string | null: false |
+| birthday         | date   | null: false |
+| email            | string | null: false |
+| password         | string | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :transactions
 
-* Configuration
 
-* Database creation
+## items テーブル
 
-* Database initialization
+| Column              | Type       | Options                        |
+| ------------------- | ---------- | ------------------------------ |
+| user                | references | null: false, foreign_key: true |
+| image               | text       | null: false                    |
+| item_name           | string     | null: false                    |
+| description         | text       | null: false                    |
+| category_id         | int        | null: false                    |
+| status_id           | int        | null: false                    |
+| delivery_fee_id     | int        | null: false                    |
+| shipping_address_id | int        | null: false                    |
+| until_shipping_id   | int        | null: false                    |
+| price               | int        | null: false                    |
 
-* How to run the test suite
+### Associatioé
 
-* Services (job queues, cache servers, search engines, etc.)
+- belongs_to :user
+- has_one :transaction
 
-* Deployment instructions
+## purchase テーブル
 
-* ...
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| transaction      | references | null: false, foreign_key: true |
+| postal_code      | string     | null: false                    |
+| prefectures_id   | int        | null: false                    |
+| city             | string     | null: false                    |
+| block            | string     | null: false                    |
+| building         | string     |                                |
+| phone_number     | string     | null: false                    |
+
+### Association
+
+- belongs_to :transaction
+
+## transactions テーブル
+
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| user             | references | null: false, foreign_key: true |
+| item             | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :item
+- has_one :purchase
+- belongs_to :user
+
+
+
+
