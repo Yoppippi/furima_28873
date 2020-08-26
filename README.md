@@ -13,30 +13,44 @@
 | email            | string | null: false |
 | password         | string | null: false |
 
+### Association
+
+- has_many :items
+
 ## items テーブル
 
-| Column            | Type       | Options                        |
-| ----------------- | ---------- | ------------------------------ |
-| user              | int        | null: false, foreign_key: true |
-| image             | text       | null: false                    |
-| item_name         | string     | null: false                    |
-| description       | text       | null: false                    |
-| category          | string     | null: false                    |
-| status            | string     | null: false                    |
-| delivery_fee      | int        | null: false                    |
-| shipping_address  | string     | null: false                    |
-| until_shipping    | int        | null: false                    |
-| price             | int        | null: false                    |
+| Column              | Type       | Options                        |
+| ------------------- | ---------- | ------------------------------ |
+| user                | references | null: false, foreign_key: true |
+| image               | text       | null: false                    |
+| item_name           | string     | null: false                    |
+| description         | text       | null: false                    |
+| category_id         | int        | null: false                    |
+| status_id           | int        | null: false                    |
+| delivery_fee_id     | int        | null: false                    |
+| shipping_address_id | int        | null: false                    |
+| until_shipping_id   | int        | null: false                    |
+| price               | int        | null: false                    |
+
+### Association
+
+- belongs_to :user
+- has_one :purchase
 
 ## purchase テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
 | user             | references | null: false, foreign_key: true |
-| creditcard       | int        | null: false                    |
-| shipping_address | string     | null: false                    |
 | postal_code      | string     | null: false                    |
-| prefectures      | string     | null: false                    |
+| prefectures_id   | int        | null: false                    |
 | city             | string     | null: false                    |
-| address          | string     | null: false                    |
+| block            | string     | null: false                    |
+| building         | string     | null: false                    |
 | phone_number     | int        | null: false                    |
+
+### Association
+
+- belongs_to :item
+
+
