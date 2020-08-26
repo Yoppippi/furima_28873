@@ -37,24 +37,22 @@
 ### Association
 
 - belongs_to :user
-- has_one :purchase
-- has_one :message
+- belongs_to :message
 
 ## purchase テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| user             | references | null: false, foreign_key: true |
+| message          | references | null: false, foreign_key: true |
 | postal_code      | string     | null: false                    |
 | prefectures_id   | int        | null: false                    |
 | city             | string     | null: false                    |
 | block            | string     | null: false                    |
-| building         | string     | null: false                    |
+| building         | string     |                                |
 | phone_number     | string     | null: false                    |
 
 ### Association
 
-- belongs_to :item
 - has_one :message
 
 ## messages テーブル
@@ -66,7 +64,7 @@
 
 ### Association
 
-- belongs_to :item
+- has_one :item
 - belongs_to :purchase
 - belongs_to :user
 
