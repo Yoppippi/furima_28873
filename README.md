@@ -16,6 +16,8 @@
 ### Association
 
 - has_many :items
+- has_many :messages
+
 
 ## items テーブル
 
@@ -48,7 +50,7 @@
 | city             | string     | null: false                    |
 | block            | string     | null: false                    |
 | building         | string     | null: false                    |
-| phone_number     | int        | null: false                    |
+| phone_number     | string     | null: false                    |
 
 ### Association
 
@@ -61,12 +63,13 @@
 | ---------------- | ---------- | ------------------------------ |
 | user             | references | null: false, foreign_key: true |
 | item             | references | null: false, foreign_key: true |
-| content          | text       | null: false                    |
 
 ### Association
 
 - belongs_to :item
 - belongs_to :purchase
+- belongs_to :user
+
 
 
 
