@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items
-- has_many :messages
+- has_many :transactions
 
 
 ## items テーブル
@@ -37,13 +37,13 @@
 ### Associatioé
 
 - belongs_to :user
-- has_one :message
+- has_one :transaction
 
 ## purchase テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| message          | references | null: false, foreign_key: true |
+| transaction      | references | null: false, foreign_key: true |
 | postal_code      | string     | null: false                    |
 | prefectures_id   | int        | null: false                    |
 | city             | string     | null: false                    |
@@ -53,9 +53,9 @@
 
 ### Association
 
-- belongs_to :message
+- belongs_to :transaction
 
-## messages テーブル
+## transactions テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
