@@ -53,6 +53,7 @@
 ### Association
 
 - belongs_to :item
+- has_one :message
 
 ## messages テーブル
 
@@ -65,6 +66,7 @@
 ### Association
 
 - belongs_to :item
+- belongs_to :purchase
 
 
 
