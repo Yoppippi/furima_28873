@@ -34,10 +34,10 @@
 | until_shipping_id   | int        | null: false                    |
 | price               | int        | null: false                    |
 
-### Association
+### Associatioé
 
 - belongs_to :user
-- belongs_to :message
+- has_one :message
 
 ## purchase テーブル
 
@@ -53,7 +53,7 @@
 
 ### Association
 
-- has_one :message
+- belongs_to :message
 
 ## messages テーブル
 
