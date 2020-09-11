@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :until_shipping
   belongs_to :user
   has_one_attached :image
+  # has_one :transaction
 
   validates :image, :item_name, :description, :category, :status, :delivery_fee, :shipping_address, :until_shipping, :price, presence: true
   validates :price, format: { with: /\A[0-9]+\z/ }, inclusion: { in: 300..9_999_999 }
