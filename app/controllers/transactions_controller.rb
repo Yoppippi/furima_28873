@@ -4,7 +4,6 @@ class TransactionsController < ApplicationController
   before_action :purchased, only: [:index, :create]
   before_action :set_item, only: [:index, :create]
 
-
   def index
     @purchase = Purchase.new
   end
@@ -14,11 +13,12 @@ class TransactionsController < ApplicationController
     if @purchase.valid?
       pay_item
       @purchase.save
-      return redirect_to root_path
+      redirect_to root_path
     else
       render 'index'
     end
   end
+
   private
 
   def purchase_params
@@ -26,15 +26,13 @@ class TransactionsController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
-      amount: @item.price,  
-      card: params['token'],    
-      currency:'jpy'                
+      amount: @item.price,
+      card: params['token'],
+      currency: 'jpy'
     )
   end
-
-  private
 
   def ensure_correct_user
     @item = Item.find(params[:item_id])
