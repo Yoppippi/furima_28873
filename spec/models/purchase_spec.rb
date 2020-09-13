@@ -10,6 +10,10 @@ RSpec.describe UserPurchase, type: :model do
       it 'token postal_code prefecture_id city block building phone_number が存在すれば購入できる' do
         expect(@purchase).to be_valid
       end
+      it '建物名が空でも登録できる' do
+        @purchase.building = ''
+        expect(@purchase).to be_valid
+      end
     end
 
     context '商品購入がうまくいかないとき' do
