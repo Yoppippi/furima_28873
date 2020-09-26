@@ -1,6 +1,6 @@
 class UserPurchase
-  POSTAL_CODE_REGEX = /\A\d{3}[-]\d{4}\z/
-  PHONE_NUMBER_REGEX = /\A\d{10,11}\z/
+  POSTAL_CODE_REGEX = /\A\d{3}[-]\d{4}\z/.freeze
+  PHONE_NUMBER_REGEX = /\A\d{10,11}\z/.freeze
 
   include ActiveModel::Model
   attr_accessor :postal_code, :prefecture_id, :city, :block, :building, :phone_number, :item_id, :user_id, :token, :transaction_id
